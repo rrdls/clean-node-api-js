@@ -11,12 +11,17 @@ class LoginRouter {
             !httpRequest.body ||
             !this.authUseCase ||
             !this.authUseCase.auth
-    ) { return HttpResponse.serverError() }
+    ) {
+      return HttpResponse.serverError()
+    }
     const { email, password } = httpRequest.body
     if (!email) return HttpResponse.badRequest('email')
     if (!password) return HttpResponse.badRequest('password')
-    this.authUseCase.auth(email, password)
-    return HttpResponse.unauthorizedError()
+    const accessToken = this.authUseCase.auth(email, password)
+    if (!accessToken) {
+      return HttpResponse.unauthorizedError()
+    }
+    return HttpResponse.ok()
   }
 }
 
