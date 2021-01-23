@@ -12,7 +12,7 @@ const makeSut = () => {
 
 const makeAuthUseCase = () => {
   class AuthUseCaseSpy {
-    async auth (email, password) {
+    async auth(email, password) {
       this.email = email
       this.password = password
       return this.accessToken
@@ -24,7 +24,7 @@ const makeAuthUseCase = () => {
 
 const makeAuthUseCaseWithError = () => {
   class AuthUseCaseSpy {
-    auth (email, password) {
+    auth(email, password) {
       throw new Error()
     }
   }
@@ -77,8 +77,8 @@ describe('Login Router', () => {
     const httpRequest = {
       body: {
         email: 'invalid_email@gmail.com',
-        password: 'invalid_password'
-      }
+        password: 'invalid_password',
+      },
     }
     const httpResponse = await sut.route(httpRequest)
     expect(httpResponse.statusCode).toBe(401)
@@ -90,8 +90,8 @@ describe('Login Router', () => {
     const httpRequest = {
       body: {
         email: 'valid_email@gmail.com',
-        password: 'valid_password'
-      }
+        password: 'valid_password',
+      },
     }
     const httpResponse = await sut.route(httpRequest)
     expect(httpResponse.statusCode).toBe(200)
@@ -103,8 +103,8 @@ describe('Login Router', () => {
     const httpRequest = {
       body: {
         email: 'any_email@gmail.com',
-        password: 'any_password'
-      }
+        password: 'any_password',
+      },
     }
     const httpResponse = await sut.route(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
@@ -118,8 +118,8 @@ describe('Login Router', () => {
     const httpRequest = {
       body: {
         email: 'any_email@gmail.com',
-        password: 'any_password'
-      }
+        password: 'any_password',
+      },
     }
     const httpResponse = await sut.route(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
@@ -132,8 +132,8 @@ describe('Login Router', () => {
     const httpRequest = {
       body: {
         email: 'any_email@gmail.com',
-        password: 'any_password'
-      }
+        password: 'any_password',
+      },
     }
     const httpResponse = await sut.route(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
