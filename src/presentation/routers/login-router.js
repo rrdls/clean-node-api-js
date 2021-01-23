@@ -1,10 +1,10 @@
 const HttpResponse = require('../helpers/http-response')
 class LoginRouter {
-  constructor (authUseCase) {
+  constructor(authUseCase) {
     this.authUseCase = authUseCase
   }
 
-  async route (httpRequest) {
+  async route(httpRequest) {
     try {
       const { email, password } = httpRequest.body
       const accessToken = await this.authUseCase.auth(email, password)
