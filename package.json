@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
-    "test:staged": "jest"
+    "test": "jest --watch --noStackTrace",
+    "test:staged": "jest --passWithNoTests"
   },
-  "standard":{
-    "env": ["jest"]
+  "standard": {
+    "env": [
+      "jest"
+    ]
   },
   "author": "Renato Ramos",
   "license": "ISC",
