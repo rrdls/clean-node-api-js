@@ -1,6 +1,7 @@
+const { MissingParamError } = require('../../utils/errors')
 class AuthUseCase {
   async auth(email) {
-    if (!email) throw new Error()
+    if (!email) return new Error()
   }
 }
 
